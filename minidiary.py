@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect, url_for, render_template_string, g, abort
+import os
 import sqlite3
 from datetime import datetime
 from pathlib import Path
@@ -186,4 +187,4 @@ def delete(entry_id: int):
 # -----------------------------
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
